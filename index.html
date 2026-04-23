@@ -8,7 +8,7 @@
       font-family: Arial, sans-serif;
       text-align: center;
       margin-top: 50px;
-      background-color: #0b1e3a; /* azul oscuro */
+      background-color: #0b1e3a;
       color: white;
     }
     .container {
@@ -18,17 +18,17 @@
       border-radius: 15px;
       display: inline-block;
       box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      max-width: 400px;
+      max-width: 450px;
     }
-    h1 {
-      color: #ff4d6d;
-    }
+    h1 { color: #ff4d6d; }
+
     input {
       padding: 10px;
       font-size: 16px;
       margin-top: 10px;
       width: 80%;
     }
+
     button {
       padding: 10px 20px;
       font-size: 16px;
@@ -39,21 +39,48 @@
       border: none;
       border-radius: 5px;
     }
+
     #resultado {
       margin-top: 20px;
       font-weight: bold;
     }
+
+    /* Carta */
     #mensajeFinal {
       margin-top: 20px;
       display: none;
-      font-size: 18px;
+      font-size: 16px;
+      text-align: left;
+      background: #fff8e7;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #f0d9b5;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
     }
+
+    #mensajeFinal.mostrar {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Imagen */
     #imagenRegalo {
       display: none;
       margin-top: 20px;
       max-width: 100%;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.8s ease;
+    }
+
+    #imagenRegalo.mostrar {
+      opacity: 1;
+      transform: scale(1);
     }
   </style>
 </head>
@@ -70,10 +97,14 @@
     <p id="resultado"></p>
 
     <div id="mensajeFinal">
-      🎁 ¡Correcto! Este es tu regalo...<br><br>Hola, papito, feliz día. No soy muy bueno escribiendo, pero quiero que sepas que te amo infinito y te encuentro una muy linda persona. Te admiro y respeto, no sabes cuánto, de verdad te lo digo; siempre que intento describirte se me ponen los ojos llorosos y me cuesta hablar. Estoy muy orgulloso de todo lo que has logrado en este tiempo; siempre eres reconocido por hacer las cosas bien y eso lo encuentro demasiado bacán. Ya mañana nos vamos a ver y poder compartir tiempo juntos. Te quiero mucho, besitos.
+      🎁 ¡Correcto! Este es tu regalo...<br><br>
+      Hola, papito, feliz día. No soy muy bueno escribiendo, pero quiero que sepas que te amo infinito y te encuentro una muy linda persona.<br><br>
+      Te admiro y respeto, no sabes cuánto, de verdad te lo digo; siempre que intento describirte se me ponen los ojos llorosos y me cuesta hablar.<br><br>
+      Estoy muy orgulloso de todo lo que has logrado en este tiempo; siempre eres reconocido por hacer las cosas bien y eso lo encuentro demasiado bacán.<br><br>
+      Ya mañana nos vamos a ver y poder compartir tiempo juntos. Te quiero mucho, besitos.
     </div>
 
-<img id="imagenRegalo" src="yo.jpg">
+    <img id="imagenRegalo" src="yo.jpg" alt="Recuerdo especial">
   </div>
 
   <script>
@@ -86,17 +117,26 @@
       if (respuesta === 'roberto') {
         resultado.textContent = '✅ ¡Correcto!';
         resultado.style.color = 'green';
+
         mensajeFinal.style.display = 'block';
         imagen.style.display = 'block';
+
+        setTimeout(() => {
+          mensajeFinal.classList.add('mostrar');
+          imagen.classList.add('mostrar');
+        }, 50);
+
       } else {
         resultado.textContent = '❌ Incorrecto, intenta de nuevo.';
         resultado.style.color = 'red';
+
         mensajeFinal.style.display = 'none';
         imagen.style.display = 'none';
+        mensajeFinal.classList.remove('mostrar');
+        imagen.classList.remove('mostrar');
       }
     }
   </script>
 </body>
 </html>
-
 

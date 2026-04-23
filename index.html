@@ -18,7 +18,7 @@
       border-radius: 15px;
       display: inline-block;
       box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      max-width: 450px;
+      max-width: 700px;
     }
     h1 { color: #ff4d6d; }
 
@@ -66,11 +66,18 @@
       transform: translateY(0);
     }
 
-    /* Imagen */
-    #imagenRegalo {
-      display: none;
+    /* Contenedor de imágenes */
+    .imagenes {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
       margin-top: 20px;
-      max-width: 100%;
+    }
+
+    .imgExtra, #imagenRegalo {
+      display: none;
+      max-width: 30%;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
       opacity: 0;
@@ -78,9 +85,13 @@
       transition: all 0.8s ease;
     }
 
-    #imagenRegalo.mostrar {
-      opacity: 1;
-      transform: scale(1);
+    #imagenRegalo {
+      max-width: 35%;
+    }
+
+    .mostrar {
+      opacity: 1 !important;
+      transform: scale(1) !important;
     }
   </style>
 </head>
@@ -104,7 +115,11 @@
       Ya mañana nos vamos a ver y poder compartir tiempo juntos. Te quiero mucho, besitos.
     </div>
 
-    <img id="imagenRegalo" src="yo.jpg" alt="Recuerdo especial">
+    <div class="imagenes">
+      <img class="imgExtra" id="yo1.jpg" src="foto1.jpg" alt="recuerdo 1">
+      <img id="imagenRegalo" src="yo.jpg" alt="recuerdo principal">
+      <img class="imgExtra" id="yo2.jpg" src="foto2.jpg" alt="recuerdo 2">
+    </div>
   </div>
 
   <script>
@@ -113,6 +128,8 @@
       const resultado = document.getElementById('resultado');
       const mensajeFinal = document.getElementById('mensajeFinal');
       const imagen = document.getElementById('imagenRegalo');
+      const img1 = document.getElementById('img1');
+      const img2 = document.getElementById('img2');
 
       if (respuesta === 'roberto') {
         resultado.textContent = '✅ ¡Correcto!';
@@ -120,10 +137,14 @@
 
         mensajeFinal.style.display = 'block';
         imagen.style.display = 'block';
+        img1.style.display = 'block';
+        img2.style.display = 'block';
 
         setTimeout(() => {
           mensajeFinal.classList.add('mostrar');
           imagen.classList.add('mostrar');
+          img1.classList.add('mostrar');
+          img2.classList.add('mostrar');
         }, 50);
 
       } else {
@@ -132,8 +153,13 @@
 
         mensajeFinal.style.display = 'none';
         imagen.style.display = 'none';
+        img1.style.display = 'none';
+        img2.style.display = 'none';
+
         mensajeFinal.classList.remove('mostrar');
         imagen.classList.remove('mostrar');
+        img1.classList.remove('mostrar');
+        img2.classList.remove('mostrar');
       }
     }
   </script>

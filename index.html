@@ -2,59 +2,97 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Juego: Hijo Preferido</title>
+  <title>🎂 Regalo de Cumpleaños</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       margin-top: 50px;
-      background-color: #f0f0f0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
     }
     .container {
       background: white;
       padding: 30px;
-      border-radius: 10px;
+      border-radius: 15px;
       display: inline-block;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 400px;
+    }
+    h1 {
+      color: #ff4d6d;
     }
     input {
       padding: 10px;
       font-size: 16px;
       margin-top: 10px;
+      width: 80%;
     }
     button {
       padding: 10px 20px;
       font-size: 16px;
-      margin-top: 10px;
+      margin-top: 15px;
       cursor: pointer;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 5px;
     }
     #resultado {
       margin-top: 20px;
       font-weight: bold;
     }
+    #mensajeFinal {
+      margin-top: 20px;
+      display: none;
+      font-size: 18px;
+      color: #333;
+    }
+    #imagenRegalo {
+      display: none;
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>🎮 Juego</h2>
-    <p>¿Cuál es tu hijo preferido?</p>
+    <h1>🎉 ¡Feliz Cumpleaños! 🎂</h1>
+    <p>Antes de abrir tu regalo, responde esta pregunta:</p>
+    <p><strong>¿Cuál es tu hijo preferido?</strong></p>
+    
     <input type="text" id="respuesta" placeholder="Escribe tu respuesta">
     <br>
     <button onclick="verificar()">Responder</button>
+
     <p id="resultado"></p>
+
+    <div id="mensajeFinal">
+      🎁 ¡Correcto! Este es tu regalo...<br><br>
+      💖 Espero que tengas un día increíble lleno de alegría 💖
+    </div>
+
+    <img id="imagenRegalo" src="tu-imagen.jpg" alt="Recuerdo especial">
   </div>
 
   <script>
     function verificar() {
       const respuesta = document.getElementById('respuesta').value.trim().toLowerCase();
       const resultado = document.getElementById('resultado');
+      const mensajeFinal = document.getElementById('mensajeFinal');
+      const imagen = document.getElementById('imagenRegalo');
 
       if (respuesta === 'roberto') {
         resultado.textContent = '✅ ¡Correcto!';
         resultado.style.color = 'green';
+        mensajeFinal.style.display = 'block';
+        imagen.style.display = 'block';
       } else {
         resultado.textContent = '❌ Incorrecto, intenta de nuevo.';
         resultado.style.color = 'red';
+        mensajeFinal.style.display = 'none';
+        imagen.style.display = 'none';
       }
     }
   </script>
